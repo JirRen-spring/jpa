@@ -1,5 +1,10 @@
 package com.JiaRen;
 
+import java.util.List;
+import java.util.Map;
+
+import javax.transaction.Transactional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -9,6 +14,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 
 import com.JiaRen.dao.CustomCustomerRepository;
+import com.JiaRen.dao.CustomerDao;
 import com.JiaRen.dao.CustomerRepository;
 import com.JiaRen.model.Customer;
 
@@ -23,9 +29,10 @@ public class JiaRenTestApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(CustomerRepository repository, CustomCustomerRepository repository1) {
+	public CommandLineRunner demo(CustomerRepository repository, CustomCustomerRepository repository1, CustomerDao customerDao) {
 		return (args) -> {
 			// save a couple of customers
+			List<Map<String, Object>> map = customerDao.getList(null);
 			repository1.customMethod();
 			repository.save(new Customer("Jack", "Bauer"));
 			repository.save(new Customer("Chloe", "O'Brian"));
