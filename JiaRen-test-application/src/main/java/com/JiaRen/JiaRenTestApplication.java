@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 
+import com.JiaRen.dao.CustomCustomerRepository;
 import com.JiaRen.dao.CustomerRepository;
 import com.JiaRen.model.Customer;
 
@@ -22,9 +23,10 @@ public class JiaRenTestApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(CustomerRepository repository) {
+	public CommandLineRunner demo(CustomerRepository repository, CustomCustomerRepository repository1) {
 		return (args) -> {
 			// save a couple of customers
+			repository1.customMethod();
 			repository.save(new Customer("Jack", "Bauer"));
 			repository.save(new Customer("Chloe", "O'Brian"));
 			repository.save(new Customer("Kim", "Bauer"));
