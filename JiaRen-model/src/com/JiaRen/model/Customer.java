@@ -9,6 +9,7 @@ import javax.persistence.*;
  * 
  */
 @Entity
+@Table(name = "customer")
 @NamedQuery(name="Customer.findAll", query="SELECT c FROM Customer c")
 public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -37,6 +38,7 @@ public class Customer implements Serializable {
 		this.id = id;
 	}
 
+	@Column(name = "first_name")
 	public String getFirstName() {
 		return this.firstName;
 	}
@@ -45,6 +47,7 @@ public class Customer implements Serializable {
 		this.firstName = firstName;
 	}
 
+	@Column(name = "last_name")
 	public String getLastName() {
 		return this.lastName;
 	}
