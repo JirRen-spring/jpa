@@ -28,7 +28,6 @@ public class JiaRenTestApplication {
 		SpringApplication.run(JiaRenTestApplication.class);
 	}
 
-	@Bean
 	public CommandLineRunner demo(CustomerRepository repository, CustomCustomerRepository repository1, CustomerDao customerDao) {
 		return (args) -> {
 			// save a couple of customers
