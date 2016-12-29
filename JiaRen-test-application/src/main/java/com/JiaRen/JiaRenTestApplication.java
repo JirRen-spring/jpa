@@ -32,8 +32,8 @@ public class JiaRenTestApplication {
 	public CommandLineRunner demo(CustomerRepository repository, CustomCustomerRepository repository1, CustomerDao customerDao) {
 		return (args) -> {
 			// save a couple of customers
-			List<Map<String, Object>> map = customerDao.getList(null);
-			repository1.customMethod();
+//			List<Map<String, Object>> map = customerDao.getList(null);
+//			repository1.customMethod();
 			repository.save(new Customer("Jack", "Bauer"));
 			repository.save(new Customer("Chloe", "O'Brian"));
 			repository.save(new Customer("Kim", "Bauer"));
