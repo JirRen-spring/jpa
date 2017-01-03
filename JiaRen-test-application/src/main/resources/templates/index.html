@@ -1,10 +1,25 @@
+<#assign base=request.contextPath />
 <!DOCTYPE html>
 <html>
 <head>
+<base id="base" href="${base}">
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${base}/lib/codemirror.css">
+<link rel="stylesheet" href="${base}/lib/test.css">
+<script src="${base}/lib/codemirror.js"></script>
+<!-- <script src="${base}/lib/javascript.js"></script> -->
+<script src="${base}/lib/markdown.js"></script>
+<script src="${base}/lib/showdown.js"></script>
 </head>
 <body>
-${test}
+
+	<div class="editor-up">
+		<textarea id="text-area" rows="6" cols="40" style="display: none"></textarea>
+	</div>
+	<div  class="editor-down">
+		<div id="show-markdown" class="preview"></div>
+	</div>
+	<script src="${base}/test.js"></script>
 </body>
 </html>

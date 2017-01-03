@@ -1,0 +1,25 @@
+.editor-up {
+	width: 48%;
+    max-height: 800px;
+	display: block;
+	float: left;
+	border-right: 1px solid #d9d9d9;
+}
+.editor-down {
+	width: 48%;
+    max-height: 800px;
+	background-color: #fcfaf2;
+	display: block;
+	float: left;
+}
+
+
+.editor-down .preview {
+	background-color: #fcfaf2;
+    overflow-y: auto;
+    height: 600px;
+}
+.CodeMirror {
+	height: 600px;
+    max-height: 97%;
+}

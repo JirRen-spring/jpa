@@ -12,7 +12,14 @@ public class TestController {
 	
 	@RequestMapping("/index")
 	public String index(Map<String, Object> model,HttpServletRequest request) {
-		model.put("test", "denghuizhi");
+		model.put("test", "index");
 		return "/index";
 	}
+	
+	@RequestMapping("/markdown")
+	public String markdown(Map<String, Object> model,HttpServletRequest request) {
+		model.put("test", "markdown");
+		return "/markdown";
+	}
+
 }
