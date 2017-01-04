@@ -32,7 +32,7 @@ myCodeMirror.on("change", function(CodeMirror, changeObj){
 
 function insertTextAtCursor() {
 	var editor = myCodeMirror;
-	var text = "hello world !";
+	var text = "![hello](http://upload-images.jianshu.io/upload_images/1815061-c5d849dad48d4f72.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240 =100x80)";
     var doc = editor.getDoc();
     var cursor = doc.getCursor();
     doc.replaceRange(text, cursor);
