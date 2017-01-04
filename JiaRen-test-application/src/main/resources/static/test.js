@@ -38,7 +38,27 @@ function insertTextAtCursor() {
     doc.replaceRange(text, cursor);
 }
 
+function test() {
+	var settings = {
+	  "async": true,
+	  "crossDomain": true,
+	  "url": "http://localhost:8080/api/test.md",
+	  "method": "GET",
+	  "dataType": "text",
+	  "headers": {
+	    "cache-control": "no-cache"
+	  },
+	  "processData": false,
+	  "contentType": false,
+	  "mimeType": "multipart/form-data"
+	}
 
+	$.ajax(settings).done(function (response) {
+	  	var html = converter.makeHtml(response);
+		var showMarkdown = document.getElementById("show-markdown");
+		showMarkdown.innerHTML = html;
+	});
+}
 
 
 //  var editor = CodeMirror.fromTextArea(document.getElementById("text-area"), {
