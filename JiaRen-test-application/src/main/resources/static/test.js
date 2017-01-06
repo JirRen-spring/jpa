@@ -60,26 +60,41 @@ function test() {
 	});
 }
 
+/* 获得md文件下载 */
+function fake_click(obj) {
+    var ev = document.createEvent("MouseEvents");
+    ev.initMouseEvent(
+        "click", true, false, window, 0, 0, 0, 0, 0
+        , false, false, false, false, 0, null
+        );
+    obj.dispatchEvent(ev);
+}
 
-//  var editor = CodeMirror.fromTextArea(document.getElementById("text-area"), {
-//    lineNumbers: true,
-//    styleActiveLine: true,
-//    matchBrackets: true
-//  });
-//  var input = document.getElementById("select");
-//  function selectTheme() {
-//    var theme = input.options[input.selectedIndex].textContent;
-//    editor.setOption("theme", theme);
-//    location.hash = "#" + theme;
-//  }
-//  var choice = (location.hash && location.hash.slice(1)) ||
-//               (document.location.search &&
-//                decodeURIComponent(document.location.search.slice(1)));
-//  if (choice) {
-//    input.value = choice;
-//    editor.setOption("theme", choice);
-//  }
-//  CodeMirror.on(window, "hashchange", function() {
-//    var theme = location.hash.slice(1);
-//    if (theme) { input.value = theme; selectTheme(); }
-//  });
+function getMD() {
+	myCodeMirror.save();
+	var name = "yours.md";
+	var data = document.getElementById("text-area").value
+    var urlObject = window.URL || window.webkitURL || window;
+
+    var export_blob = new Blob([data]);
+
+    var save_link = document.createElementNS("http://www.w3.org/1999/xhtml", "a")
+    save_link.href = urlObject.createObjectURL(export_blob);
+    save_link.download = name;
+    fake_click(save_link);
+}
+
+function getHtml() {
+	myCodeMirror.save();
+	var name = "yours.html";
+	var data =  converter.makeHtml(document.getElementById("text-area").value);
+    var urlObject = window.URL || window.webkitURL || window;
+
+    var export_blob = new Blob([data]);
+
+    var save_link = document.createElementNS("http://www.w3.org/1999/xhtml", "a")
+    save_link.href = urlObject.createObjectURL(export_blob);
+    save_link.download = name;
+    fake_click(save_link);
+}
+
