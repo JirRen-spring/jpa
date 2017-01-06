@@ -18,9 +18,10 @@ showdown.setFlavor('github');
 
 converter.setOption('ghCodeBlocks', true);
 var myCodeMirror = CodeMirror.fromTextArea(document.getElementById("text-area"), {
-    lineNumbers: true,
+    lineNumbers: true,   //显示行号
     value: "function myScript(){return 100;}\n",
-	mode:  "markdown"
+	mode:  "markdown",
+	lineWrapping: true  //自动换行
 })
 
 myCodeMirror.on("change", function(CodeMirror, changeObj){
@@ -98,3 +99,10 @@ function getHtml() {
     fake_click(save_link);
 }
 
+function indent() {
+	var editor = myCodeMirror;
+	var text = "　　";
+    var doc = editor.getDoc();
+    var cursor = doc.getCursor();
+    doc.replaceRange(text, cursor);
+}
