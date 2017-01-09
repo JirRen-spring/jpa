@@ -1,4 +1,7 @@
-var converter = new showdown.Converter();
+/**
+ * markdown转换对象 https://github.com/showdownjs/showdown
+ */
+var converter = new showdown.Converter();   
 showdown.setFlavor('github');
 //converter.setFlavor('github');
 //converter.setOption('noHeaderId', true);
@@ -15,11 +18,13 @@ showdown.setFlavor('github');
 //converter.setOption('disableForced4SpacesIndentedSublists', true);
 //converter.setOption('simpleLineBreaks', true);
 //converter.setOption('requireSpaceBeforeHeadingText', true);
-
 converter.setOption('ghCodeBlocks', true);
+
+/**
+ * codemirror编辑器对象 http://codemirror.net/doc/manual.html
+ */
 var myCodeMirror = CodeMirror.fromTextArea(document.getElementById("text-area"), {
     lineNumbers: true,   //显示行号
-    value: "function myScript(){return 100;}\n",
 	mode:  "markdown",
 	lineWrapping: true  //自动换行
 })
@@ -31,6 +36,10 @@ myCodeMirror.on("change", function(CodeMirror, changeObj){
 	showMarkdown.innerHTML = html;
 });
 
+/**
+ * 插入图片
+ * @returns
+ */
 function insertTextAtCursor() {
 	var editor = myCodeMirror;
 	var text = "![hello](http://upload-images.jianshu.io/upload_images/1815061-c5d849dad48d4f72.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240 =100x80)";
@@ -61,7 +70,10 @@ function test() {
 	});
 }
 
-/* 获得md文件下载 */
+/** 
+ * 提供文件下载函数 
+ * @return
+ */
 function fake_click(obj) {
     var ev = document.createEvent("MouseEvents");
     ev.initMouseEvent(
@@ -71,6 +83,10 @@ function fake_click(obj) {
     obj.dispatchEvent(ev);
 }
 
+/**
+ * 提供markdown文件下载
+ * @returns
+ */
 function getMD() {
 	myCodeMirror.save();
 	var name = "yours.md";
@@ -85,6 +101,10 @@ function getMD() {
     fake_click(save_link);
 }
 
+/**
+ * 提供html下载
+ * @returns
+ */
 function getHtml() {
 	myCodeMirror.save();
 	var name = "yours.html";
@@ -99,6 +119,10 @@ function getHtml() {
     fake_click(save_link);
 }
 
+/**
+ * 使用全角符号换行
+ * @returns
+ */
 function indent() {
 	var editor = myCodeMirror;
 	var text = "　　";
@@ -106,3 +130,4 @@ function indent() {
     var cursor = doc.getCursor();
     doc.replaceRange(text, cursor);
 }
+
